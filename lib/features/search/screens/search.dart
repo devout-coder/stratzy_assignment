@@ -109,6 +109,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     height: 30,
                     child: Row(
                       children: [
+                        SizedBox(width: 12),
                         Expanded(
                           child: ListView.builder(
                             scrollDirection: Axis.horizontal,
@@ -122,10 +123,14 @@ class _SearchScreenState extends State<SearchScreen> {
                                 },
                                 child: Container(
                                   margin: EdgeInsets.symmetric(
-                                      vertical: 0, horizontal: 20),
+                                    vertical: 0,
+                                    horizontal: 10,
+                                  ),
                                   height: 40,
                                   padding: EdgeInsets.symmetric(
-                                      vertical: 5, horizontal: 10),
+                                    vertical: 5,
+                                    horizontal: 10,
+                                  ),
                                   decoration: BoxDecoration(
                                     gradient: selectedCategory == index
                                         ? LinearGradient(
@@ -174,7 +179,6 @@ class _SearchScreenState extends State<SearchScreen> {
                           .read<ItemsCubit>()
                           .filterSearchItems(
                               categories[selectedCategory], searchQuery);
-                      // debugPrint(filteredItems.length.toString());
                       return ListView.separated(
                         itemCount: filteredItems.length,
                         itemBuilder: (context, index) {
