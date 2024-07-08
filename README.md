@@ -5,6 +5,6 @@ Stratzy's take home assignment
 ## Getting Started
 
 Screenshots of final project:
-![Final UI](https://drive.google.com/file/d/1-07c-w26_rIbiesHM2_3Q1mk13KAyGSA/view?usp=sharing)
-![Search Demonstation](https://drive.google.com/file/d/1-8UemEXetaB9dvo4BRU3om25f2260MZ1/view?usp=sharing)
-![Search and Filter Demonstation](https://drive.google.com/file/d/1-8UemEXetaB9dvo4BRU3om25f2260MZ1/view)
+![Final UI](https://github.com/devout-coder/doneify/assets/64915967/e45efde2-c0ce-4d8b-802b-ee9a0f76ee28)
+![Search Demonstation](https://github.com/devout-coder/doneify/assets/64915967/5525970d-079d-4e3d-ba80-4674ccf30204)
+![Search and Filter Demonstation](https://github.com/devout-coder/doneify/assets/64915967/584d05b9-f994-4e4e-b757-9ae0c103b10a)
