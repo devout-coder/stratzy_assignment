@@ -93,9 +93,13 @@ class _SearchScreenState extends State<SearchScreen> {
                         ),
                       ),
                       IconButton(
-                        icon: Icon(Icons.cancel, size: 24),
+                        icon: Icon(Icons.close, size: 24),
                         color: Colors.white,
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            searchQuery = "";
+                          });
+                        },
                       ),
                     ],
                   ),
@@ -172,7 +176,6 @@ class _SearchScreenState extends State<SearchScreen> {
                           .filterSearchItems(
                               categories[selectedCategory], searchQuery);
                       // debugPrint(filteredItems.length.toString());
-                      // return Container();
                       return ListView.separated(
                         itemCount: filteredItems.length,
                         itemBuilder: (context, index) {
