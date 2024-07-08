@@ -62,23 +62,18 @@ class _SearchScreenState extends State<SearchScreen> {
                                   color: Colors.white,
                                 ),
                                 decoration: InputDecoration(
-                                  isDense: true, 
-                                  contentPadding: EdgeInsets
-                                      .zero, 
+                                  isDense: true,
+                                  contentPadding: EdgeInsets.zero,
                                   border: OutlineInputBorder(
-                                    borderSide: BorderSide
-                                        .none, 
-                                    borderRadius: BorderRadius
-                                        .zero, 
+                                    borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.zero,
                                   ),
                                   enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide
-                                        .none, 
+                                    borderSide: BorderSide.none,
                                     borderRadius: BorderRadius.zero,
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide
-                                        .none, 
+                                    borderSide: BorderSide.none,
                                     borderRadius: BorderRadius.zero,
                                   ),
                                   hintText: "Search by Stock Name, Patterns...",
@@ -139,7 +134,10 @@ class _SearchScreenState extends State<SearchScreen> {
                                             ],
                                           )
                                         : LinearGradient(
-                                            colors: [Colors.transparent],
+                                            colors: [
+                                              Colors.transparent,
+                                              Colors.transparent
+                                            ],
                                           ),
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(8),
@@ -166,6 +164,78 @@ class _SearchScreenState extends State<SearchScreen> {
                       ],
                     ),
                   ),
+                  Expanded(
+                    child: Builder(builder: (context) {
+                      List<SearchItem> filteredItems = context
+                          .read<ItemsCubit>()
+                          .filterSearchItems(
+                              categories[selectedCategory], searchQuery);
+                      // debugPrint(filteredItems.length.toString());
+                      // return Container();
+                      return ListView.separated(
+                        itemCount: filteredItems.length,
+                        itemBuilder: (context, index) {
+                          return Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                height: 35,
+                                width: 35,
+                                decoration: BoxDecoration(
+                                    color: Color(0xffD9D9D9),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(9))),
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    filteredItems[index].name,
+                                    style: TextStyle(
+                                      color: Color(0xffEBECEC),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  Text(
+                                    filteredItems[index].category,
+                                    style: TextStyle(
+                                      color: Color(0xffEBECEC),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              filteredItems[index].isBookMarked
+                                  ? GradientIcon(
+                                      icon: Icons.bookmark,
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Color(0xff01C36D),
+                                          Color(0xff01C16C),
+                                          Color(0xff018A4D)
+                                        ],
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                      ),
+                                    )
+                                  : Icon(
+                                      Icons.bookmark_border_outlined,
+                                      color: Color(0xffEBECEC),
+                                    )
+                            ],
+                          );
+                        },
+                        separatorBuilder: (context, index) {
+                          return Container(
+                            height: 30,
+                            color: Color(0xff211A2A),
+                          );
+                        },
+                      );
+                    }),
+                  )
                 ],
               ),
             ),

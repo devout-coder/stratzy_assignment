@@ -24,8 +24,12 @@ class ItemsCubit extends Cubit<List<SearchItem>> {
   ItemsCubit() : super(searchItems);
   List<SearchItem> filterSearchItems(String category, String query) {
     List<SearchItem> filteredItems = state.where((SearchItem searchItem) {
-      return searchItem.categoryLabel == category &&
-          searchItem.name.contains(query);
+      if (category == "All") {
+        return searchItem.name.toLowerCase().contains(query.toLowerCase());
+      }
+
+      return searchItem.name.toLowerCase().contains(query.toLowerCase()) &&
+          searchItem.categoryLabel == category;
     }).toList();
     return filteredItems;
   }
