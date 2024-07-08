@@ -40,56 +40,55 @@ class _SearchScreenState extends State<SearchScreen> {
                           color: Color(0xff2A2136),
                           borderRadius: BorderRadius.all(Radius.circular(8)),
                         ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            GradientIcon(
-                              icon: Icons.search,
-                              gradient: LinearGradient(
-                                colors: [
-                                  Color(0xff01C36D),
-                                  Color(0xff01C16C),
-                                  Color(0xff018A4D)
-                                ],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
+                        child: Container(
+                          width: screenWidth * 0.65,
+                          child: TextField(
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                            decoration: InputDecoration(
+                              prefixIconConstraints: BoxConstraints(
+                                minWidth: 0,
+                                minHeight: 0,
+                              ),
+                              prefixIcon: GradientIcon(
+                                icon: Icons.search,
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Color(0xff01C36D),
+                                    Color(0xff01C16C),
+                                    Color(0xff018A4D)
+                                  ],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
+                              ),
+                              isDense: true,
+                              contentPadding: EdgeInsets.zero,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.zero,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.zero,
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.zero,
+                              ),
+                              hintText: "Search by Stock Name, Patterns...",
+                              hintStyle: TextStyle(
+                                fontSize: 12,
+                                color: Color(0xffEBECEC),
                               ),
                             ),
-                            Container(
-                              width: screenWidth * 0.6,
-                              child: TextField(
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
-                                decoration: InputDecoration(
-                                  isDense: true,
-                                  contentPadding: EdgeInsets.zero,
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.zero,
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.zero,
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.zero,
-                                  ),
-                                  hintText: "Search by Stock Name, Patterns...",
-                                  hintStyle: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xffEBECEC),
-                                  ),
-                                ),
-                                onChanged: (String newQuery) {
-                                  setState(() {
-                                    searchQuery = newQuery;
-                                  });
-                                },
-                              ),
-                            ),
-                          ],
+                            onChanged: (String newQuery) {
+                              setState(() {
+                                searchQuery = newQuery;
+                              });
+                            },
+                          ),
                         ),
                       ),
                       IconButton(
