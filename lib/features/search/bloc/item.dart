@@ -22,9 +22,10 @@ List<SearchItem> searchItems = [
 
 class ItemsCubit extends Cubit<List<SearchItem>> {
   ItemsCubit() : super(searchItems);
-  List<SearchItem> filterSearchItems(String item) {
+  List<SearchItem> filterSearchItems(String category, String query) {
     List<SearchItem> filteredItems = state.where((SearchItem searchItem) {
-      return searchItem.categoryLabel == item;
+      return searchItem.categoryLabel == category &&
+          searchItem.name.contains(query);
     }).toList();
     return filteredItems;
   }
