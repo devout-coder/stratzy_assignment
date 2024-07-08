@@ -1,16 +1,10 @@
 # stratzy
 
-A new Flutter project.
+Stratzy's take home assignment
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Screenshots of final project:
+![Final UI](https://drive.google.com/file/d/1-07c-w26_rIbiesHM2_3Q1mk13KAyGSA/view?usp=sharing)
+![Search Demonstation](https://drive.google.com/file/d/1-8UemEXetaB9dvo4BRU3om25f2260MZ1/view?usp=sharing)
+![Search and Filter Demonstation](https://drive.google.com/file/d/1-8UemEXetaB9dvo4BRU3om25f2260MZ1/view)
