@@ -164,6 +164,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       ],
                     ),
                   ),
+                  SizedBox(height: 20),
                   Expanded(
                     child: Builder(builder: (context) {
                       List<SearchItem> filteredItems = context
@@ -175,61 +176,69 @@ class _SearchScreenState extends State<SearchScreen> {
                       return ListView.separated(
                         itemCount: filteredItems.length,
                         itemBuilder: (context, index) {
-                          return Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                height: 35,
-                                width: 35,
-                                decoration: BoxDecoration(
-                                    color: Color(0xffD9D9D9),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(9))),
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    filteredItems[index].name,
-                                    style: TextStyle(
-                                      color: Color(0xffEBECEC),
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  Text(
-                                    filteredItems[index].category,
-                                    style: TextStyle(
-                                      color: Color(0xffEBECEC),
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              filteredItems[index].isBookMarked
-                                  ? GradientIcon(
-                                      icon: Icons.bookmark,
-                                      gradient: LinearGradient(
-                                        colors: [
-                                          Color(0xff01C36D),
-                                          Color(0xff01C16C),
-                                          Color(0xff018A4D)
-                                        ],
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
+                          return Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 12),
+                            color: Color(0xff2A2136),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  height: 35,
+                                  width: 35,
+                                  decoration: BoxDecoration(
+                                      color: Color(0xffD9D9D9),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(9))),
+                                ),
+                                SizedBox(width: 15),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      filteredItems[index].name,
+                                      style: TextStyle(
+                                        color: Color(0xffEBECEC),
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500,
                                       ),
-                                    )
-                                  : Icon(
-                                      Icons.bookmark_border_outlined,
-                                      color: Color(0xffEBECEC),
-                                    )
-                            ],
+                                    ),
+                                    Text(
+                                      filteredItems[index].category,
+                                      style: TextStyle(
+                                        color: Color(0xffEBECEC),
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Spacer(),
+                                filteredItems[index].isBookMarked
+                                    ? GradientIcon(
+                                        offset: Offset(0, 0),
+                                        icon: Icons.bookmark,
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Color(0xff01C36D),
+                                            Color(0xff01C16C),
+                                            Color(0xff018A4D)
+                                          ],
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                        ),
+                                      )
+                                    : Icon(
+                                        Icons.bookmark_border_outlined,
+                                        color: Color(0xffEBECEC),
+                                      )
+                              ],
+                            ),
                           );
                         },
                         separatorBuilder: (context, index) {
                           return Container(
-                            height: 30,
+                            height: 20,
                             color: Color(0xff211A2A),
                           );
                         },
