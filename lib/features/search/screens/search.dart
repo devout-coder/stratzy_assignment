@@ -13,7 +13,21 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  String searchQuery = "";
+  final TextEditingController _controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(() {
+      _controller.text = "";
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   int selectedCategory = 0;
 
@@ -25,28 +39,29 @@ class _SearchScreenState extends State<SearchScreen> {
       return BlocBuilder<ItemsCubit, List<SearchItem>>(
         builder: (context, items) {
           return Scaffold(
-            backgroundColor: Color(0xff211A2A),
+            backgroundColor: const Color(0xff211A2A),
             body: SafeArea(
               child: Column(
                 children: [
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        padding: EdgeInsets.all(12),
-                        decoration: BoxDecoration(
+                        padding: const EdgeInsets.all(12),
+                        decoration: const BoxDecoration(
                           color: Color(0xff2A2136),
                           borderRadius: BorderRadius.all(Radius.circular(8)),
                         ),
-                        child: Container(
+                        child: SizedBox(
                           width: screenWidth * 0.65,
                           child: TextField(
-                            style: TextStyle(
+                            controller: _controller,
+                            style: const TextStyle(
                               color: Colors.white,
                             ),
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               prefixIconConstraints: BoxConstraints(
                                 minWidth: 0,
                                 minHeight: 0,
@@ -83,33 +98,26 @@ class _SearchScreenState extends State<SearchScreen> {
                                 color: Color(0xffEBECEC),
                               ),
                             ),
-                            onChanged: (String newQuery) {
-                              setState(() {
-                                searchQuery = newQuery;
-                              });
-                            },
                           ),
                         ),
                       ),
                       IconButton(
-                        icon: Icon(Icons.close, size: 24),
+                        icon: const Icon(Icons.close, size: 24),
                         color: Colors.white,
                         onPressed: () {
-                          setState(() {
-                            searchQuery = "";
-                          });
+                          _controller.clear();
                         },
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 22,
                   ),
-                  Container(
+                  SizedBox(
                     height: 30,
                     child: Row(
                       children: [
-                        SizedBox(width: 12),
+                        const SizedBox(width: 12),
                         Expanded(
                           child: ListView.builder(
                             scrollDirection: Axis.horizontal,
@@ -122,7 +130,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   });
                                 },
                                 child: Container(
-                                  margin: EdgeInsets.symmetric(
+                                  margin: const EdgeInsets.symmetric(
                                     vertical: 0,
                                     horizontal: 10,
                                   ),
@@ -178,12 +186,12 @@ class _SearchScreenState extends State<SearchScreen> {
                       List<SearchItem> filteredItems = context
                           .read<ItemsCubit>()
                           .filterSearchItems(
-                              categories[selectedCategory], searchQuery);
+                              categories[selectedCategory], _controller.text);
                       return ListView.separated(
                         itemCount: filteredItems.length,
                         itemBuilder: (context, index) {
                           return Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 12),
                             color: Color(0xff2A2136),
                             child: Row(
@@ -192,18 +200,18 @@ class _SearchScreenState extends State<SearchScreen> {
                                 Container(
                                   height: 35,
                                   width: 35,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       color: Color(0xffD9D9D9),
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(9))),
                                 ),
-                                SizedBox(width: 15),
+                                const SizedBox(width: 15),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       filteredItems[index].name,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Color(0xffEBECEC),
                                         fontSize: 15,
                                         fontWeight: FontWeight.w500,
